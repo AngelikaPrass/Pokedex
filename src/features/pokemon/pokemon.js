@@ -1,16 +1,6 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-    decrement,
-    increment,
-    incrementByAmount,
-    incrementAsync,
-    selectCount,
-} from './pokemonSlice';
+import { selectPokemonById} from "./pokemonListSlice";
 
-export function Pokemon() {
-    return (
-        <div>
-        </div>
-    );
+export const SinglePokemonPage = ({ match }) => {
+    const { pokemonId } = match.params
+    const pokemon = useSelector(state => selectPokemonById(state, pokemonId));
 }
