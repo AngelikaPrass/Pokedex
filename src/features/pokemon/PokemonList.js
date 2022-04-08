@@ -14,14 +14,22 @@ export const PokemonList = () => {
     }, [pokemonStatus, dispatch])
 
     const onClickFunction = (n) => {
-        axios.get(`https://pokeapi.co/api/v2/limit=20&offset=${n}/`)
-            .then(res => res.data)
-            .then(data => dispatch(addPokemon(data)))
+        if (n !== 0){
+            axios.get(`https://pokeapi.co/api/v2?limit=20&offset=${n}/`)
+                .then(res => res.data)
+                .then(data => dispatch(addPokemon(data)))
+        }
+        else{
+            axios.get(`https://pokeapi.co/api/v2?limit=20/`)
+                .then(res => res.data)
+                .then(data => dispatch(addPokemon(data)))
+        }
+
     }
     const error = useSelector(state => state.pokemon.pokemon.error);
 
-    const renderedPokemon = pokemon.map(poke => (
-            <h3>{poke.title}</h3>
+    const renderedPokemon = pokemon.map((poke, index) => (
+        <h3 key={index}> {poke.title} </h3>
     ))
 
     return (

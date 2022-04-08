@@ -7,10 +7,13 @@ import {
   Redirect
 } from 'react-router-dom'
 import {PokemonList} from "./features/pokemon/PokemonList";
+import {useDispatch} from "react-redux";
 
 function App() {
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    fetchPokemon();
+    dispatch(fetchPokemon());
   }, []);
   return (
         {/*<Navbar />*/},
