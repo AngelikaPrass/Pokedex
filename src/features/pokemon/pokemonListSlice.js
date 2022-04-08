@@ -9,8 +9,8 @@ const initialState = {
 }
 
 export const fetchPokemon = createAsyncThunk('pokemon/fetchPokemon', async () => {
-    const response = await axios.get(`https://pokeapi.co/api/v2?limit=20/`)
-    return response.data
+    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=20/`)
+    return response.data.results
 })
 
 const pokemonListSlice = createSlice({
