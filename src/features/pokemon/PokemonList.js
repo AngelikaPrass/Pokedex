@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {fetchPokemon, selectPokemon, addPokemon} from "./pokemonListSlice";
 import axios from 'axios';
 import {SinglePokemonPage} from "./pokemon";
+import {Animation} from "../animation";
 
 export const PokemonList = () => {
     const dispatch = useDispatch();
@@ -14,10 +15,6 @@ export const PokemonList = () => {
         if (pokemonStatus === 'idle') {
             dispatch(fetchPokemon())
         }
-        // if (pokemonStatus === 'loading'){
-        //     // { animation }
-        //
-
     }, [pokemonStatus, dispatch])
 
 
@@ -48,11 +45,10 @@ export const PokemonList = () => {
         </div>
 
     ))
-
     return (
         <div>
         {error ? <div> there's been an error</div> : <> </>}
-            {/*{pokemonStatus === 'loading' ? animation() :<> </>}*/}
+            {pokemonStatus === 'loading' ? <Animation /> :<> </>}
         {!error && !(pokemonStatus === 'loading') &&
         <section className="pokemon-list">
             <h2>pokemon</h2>

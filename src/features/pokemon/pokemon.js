@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {Animation} from "../animation";
 
 export const SinglePokemonPage = (props) => {
     const pokemonId = props.id;
@@ -15,7 +16,7 @@ export const SinglePokemonPage = (props) => {
 
     return(
         <div>
-            {loading && <h3> please, wait a second... </h3>}
+            {loading && <h3> <Animation /> </h3>}
         {!loading &&
             <div>
             <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`} alt={pokeData.name} />
