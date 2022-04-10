@@ -9,11 +9,17 @@ export const PokemonList = () => {
     const pokemon = useSelector(selectPokemon);
     const [offset, setOffset] = useState(20);
     const pokemonStatus = useSelector(state => state.pokemon.pokemon.status);
+
     useEffect(() => {
         if (pokemonStatus === 'idle') {
             dispatch(fetchPokemon())
         }
+        // if (pokemonStatus === 'loading'){
+        //     // { animation }
+        //
+
     }, [pokemonStatus, dispatch])
+
 
     const onClickFunction = (n) => {
         if (n !== 0){
@@ -30,16 +36,24 @@ export const PokemonList = () => {
 
     }
     const error = useSelector(state => state.pokemon.pokemon.error);
-
+    const getId = (url) => {
+        const id = url.split("/");
+        return id[id.length - 2];
+    }
     const renderedPokemon = pokemon.map((poke, index) => (
+
         <div key={index}>
             <h3> {poke.name} </h3>
-            <SinglePokemonPage id={poke.id}/>
+            <SinglePokemonPage id={getId(poke.url)}/>
         </div>
 
     ))
 
     return (
+        <div>
+        {error ? <div> there's been an error</div> : <> </>}
+            {/*{pokemonStatus === 'loading' ? animation() :<> </>}*/}
+        {!error && !(pokemonStatus === 'loading') &&
         <section className="pokemon-list">
             <h2>pokemon</h2>
             {renderedPokemon}
@@ -47,5 +61,7 @@ export const PokemonList = () => {
                 <button onClick={() => onClickFunction(offset)}> Load more </button>
             </div>
         </section>
+        }
+        </div>
     )
 }
