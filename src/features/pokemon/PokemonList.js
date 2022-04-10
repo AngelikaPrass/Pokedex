@@ -4,6 +4,8 @@ import {fetchPokemon, selectPokemon, addPokemon} from "./pokemonListSlice";
 import axios from 'axios';
 import {SinglePokemonPage} from "./pokemon";
 import {Animation} from "../animation";
+import { VscError } from "react-icons/vsc";
+import "../../style.css";
 
 export const PokemonList = () => {
     const dispatch = useDispatch();
@@ -39,25 +41,24 @@ export const PokemonList = () => {
     }
     const renderedPokemon = pokemon.map((poke, index) => (
 
-        <div key={index}>
+        <div key={index} className="flex-child">
             <h3> {poke.name} </h3>
             <SinglePokemonPage id={getId(poke.url)}/>
         </div>
 
     ))
     return (
-        <div>
-        {error ? <div> there's been an error</div> : <> </>}
+        <>
+        {error ? <div> <VscError /> Oops! You've encountered an error </div> : <> </>}
             {pokemonStatus === 'loading' ? <Animation /> :<> </>}
         {!error && !(pokemonStatus === 'loading') &&
         <section className="pokemon-list">
-            <h2>pokemon</h2>
             {renderedPokemon}
             <div>
-                <button onClick={() => onClickFunction(offset)}> Load more </button>
+                <button className="button" onClick={() => onClickFunction(offset)}> Load more </button>
             </div>
         </section>
         }
-        </div>
+        </>
     )
 }

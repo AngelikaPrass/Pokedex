@@ -1,13 +1,9 @@
 import {useEffect} from "react";
 import {fetchPokemon} from "./features/pokemon/pokemonListSlice";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect
-} from 'react-router-dom'
 import {PokemonList} from "./features/pokemon/PokemonList";
 import {useDispatch} from "react-redux";
+import "./style.css";
+import {Header} from "./features/header";
 
 function App() {
   const dispatch = useDispatch();
@@ -16,18 +12,11 @@ function App() {
     dispatch(fetchPokemon());
   }, []);
   return (
-        {/*<Navbar />*/},
         <div className="App">
-          <PokemonList />
+            <Header />
+            <PokemonList />
         </div>
   )
-  // return (
-  //   <div className="App">
-  //     {/*<header></header>*/}
-  //     {/*<pokemonList></pokemonList>*/}
-  //     {/*<footer></footer>*/}
-  //   </div>
-  // );
-}
+ }
 
 export default App;

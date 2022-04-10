@@ -1,0 +1,110 @@
+body {
+    background: var(--body-bg);
+    color: var(--body-color);
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+}
+*{
+    box-sizing: border-box;
+}
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--accent);
+    color: var(--pokedex-color);
+}
+.header-content{
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 90em;
+    height: 3em;
+}
+
+.pokemon-list{
+    margin: 3em auto 0;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    flex: 1 0 auto;
+    align-items: stretch;
+}
+.flex-child>h3 {
+    margin-left: 1em;
+    text-transform: capitalize;
+    color: var(--text-pop);
+}
+.flex-child{
+    margin: 0.2em auto;
+    width: 100%;
+    background-color: var(--component-bg);
+    border: solid var(--border-color) 1px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px var(--shadow);
+}
+.poke-detail{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+
+}
+.button{
+    border: 1px solid var(--accent);
+    border-radius: 20px;
+    background: var(--component-bg);
+    color: var(--body-color);
+    text-decoration: none;
+    box-shadow: none;
+    margin-bottom: 1em;
+    transition-duration: 0.4s;
+    height: 5em;
+    width: fit-content;
+}
+.button:hover{
+    background-color: var(--accent);
+}
+
+
+.type {
+    margin: 0 0.5rem;
+}
+.more-details{
+    align-self: stretch;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1em;
+    margin-right: 1em;
+}
+.more-details>button {
+    margin-left: auto;
+    justify-self: flex-end;
+}
+
+body.light-mode {
+        --body-bg: #fafafa;
+        --component-bg: #fafafa;
+        --header-bg: #3c5aa6;
+        --pokedex-color: #ffcb05;
+        --accent: #3c5aa6;
+        --text-pop: #484b6a;
+        --body-color: #000000;
+        --border-color: #484b6a;
+        --shadow: #484b6a;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-mode {
+        --body-bg: #121212;
+        --component-bg: #1e1e1e;
+        --header-bg: #000000;
+        --pokedex-color: #ffffff;
+        --accent: #7A0BC0;
+        --text-pop: #FFFFFF;
+        --body-color: #FFFFFF;
+        --border-color: #1e1e1e;
+        --shadow: #121212;
+
+}
